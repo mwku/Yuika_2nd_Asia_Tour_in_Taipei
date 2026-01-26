@@ -26,9 +26,8 @@ body{
     /* position: relative; */
     overflow: scroll;
     flex-direction: column;
+    scroll-behavior: smooth;
 }
-
-
 
 .top-image {
     /* position: absolute; */
@@ -138,6 +137,7 @@ body{
     align-items: center;
     overflow-x: scroll;
     overflow-y: hidden;
+    scroll-behavior: smooth; 
 }
 .bottom-bar-container::-webkit-scrollbar {
     display: none;
@@ -147,12 +147,14 @@ body{
     /* min-width: 100px; */
     /* width: 100px; */
     width: auto;
+    height: 10px;
     padding-top: 13px;
     padding-bottom: 13px;
     margin-left: 10px;
     margin-right: 10px; 
     /* padding-left: 25px;
     padding-right: 25px; */
+    /* font-size: ; */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-weight: bold;
     cursor: pointer;
@@ -167,5 +169,8 @@ body{
 .bottom-bar-container a:hover{
     color: #000097;
 }
-/* #000097 */
-/* padding tb 13 lr 25 */
+.bottom-bar-container .active{
+    border-top: 2px solid #00000000;
+    border-bottom: 2px solid yellow ;
+}
+/*border-bottom: 2px solid yellow ;*/

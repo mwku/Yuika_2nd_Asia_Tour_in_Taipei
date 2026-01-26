@@ -4,6 +4,8 @@ function resizeBackground() {
     backgroundDiv.style.width = String(Number(window.innerWidth) - BackgroundMrgin*2) + "px";
 }
 
+
+
 function initializeBackground() {
     const backgroundDiv = document.getElementById("background");
     fetch("static/json/data.json")
@@ -18,7 +20,8 @@ function initializeBackground() {
             let cellDiv = `<div class="cell">
                 <p class="cell-title" id="${cellData["ID"]}">${cellData["Title"]}</p>
                 <hr class="divider">`
-            let bottomBar = `<a href="#${cellData["ID"]}">${cellData["Title"]}</a>`
+            let bottomBar = `<a id="nav-${cellData["ID"]}" href="#${cellData["ID"]}">${cellData["Title"]}</a>`
+            IDList.push(cellData["ID"]);
             for (let line of cellData["Index"]) {
                 if(line["type"] === "p"){
                     cellDiv += `<p class="cell-descripition">${line["text"]}</p>`;
@@ -35,14 +38,19 @@ function initializeBackground() {
             cellDiv += `</div>`;
             backgroundDiv.insertAdjacentHTML("beforeend", cellDiv);
             bottomBarContainer.insertAdjacentHTML("beforeend", bottomBar);
+            AddListener(cellData["ID"]);
         }
         const spacerDiv = `<div style="height: 20%; width: 1px; flex-shrink: 0"></div>`;
         backgroundDiv.insertAdjacentHTML("beforeend", spacerDiv);
+
+        CreateIDList();//Bottom Bar
     })
 }
 
 
 document.addEventListener("DOMContentLoaded", function() {
+    
+
     initializeBackground();
     resizeBackground();
     let isListenerAdded = false;
