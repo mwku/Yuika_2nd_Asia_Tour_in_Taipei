@@ -1,0 +1,1 @@
+const BackgroundMrgin = 15;
