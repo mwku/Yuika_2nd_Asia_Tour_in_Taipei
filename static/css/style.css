@@ -32,7 +32,7 @@ body{
     /* position: absolute; */
     /* top: 5%; */
     display: block;
-    max-width: 80%;
+    width: 80%;
     height : auto;
     object-fit: contain;
     margin-top: 5%;
@@ -51,6 +51,57 @@ body{
     margin-bottom: 5px;
 }
 .divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ffffff;
+    margin: 0;
+}
+
+.cell-descripition{
+    font-size: 15px;
+    line-height: 1;
+    height: 25px;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    text-align: left;
+    text-justify: center;
+}
+.cell-a{
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1;
+    height: 25px;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    text-align: left;
+    text-justify: center;
+
+}
+
+.info-divider-container{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 5px;
+}
+.info-text{
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0;
+    margin-right: 10px;
+    padding: 0;
+    text-align: left;
+    text-justify: center;
+}
+
+.info-divider{
     width: 100%;
     border: none;
     border-top: 1px solid #ffffff;
