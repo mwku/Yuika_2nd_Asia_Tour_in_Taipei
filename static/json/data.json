@@ -1,0 +1,30 @@
+{
+    "TopImage":"./img/top.png",
+    "Cells":[
+        {
+            "Title":"Zepp New Taipei",
+            "Index":[
+                {"type":"p","text":"地址:新北市新莊區新北大道四段3號8樓<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(宏匯廣場)"},
+                {"type":"spacer","height":30},
+                {"type":"a","text":"Zepp官方網站","href":"https://www.zepp.co.jp/hall/newtaipei/"},
+                {"type":"a","text":"Zepp facebook","href":"https://www.facebook.com/zeppnewtaipei/?locale=zh_TW"},
+                {"type":"a","text":"Zepp instagram","href":"https://www.instagram.com/zeppnewtaipei/"},
+                {"type":"mail","text":"Zepp mail","href":"inquiry.tw@zepp.co.jp"},
+                {"type":"a","text":"google map  (台北車站-Zepp New Taipei)","href":"https://www.google.com/maps/dir/台北車站捷運站+100臺北市中正區忠孝西路一段/Zepp+New+Taipei+242新北市新莊區新北大道四段3號8樓/@25.0574708,121.4595517,14z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3442a965e1aebc47:0xfc079d9e81a5d9c6!2m2!1d121.5156511!2d25.0467151!1m5!1m1!1s0x3442a914b663455b:0xee6cea3890a8418f!2m2!1d121.4494801!2d25.0597396!3e3?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D"}
+            ]
+        },
+        {
+            "Title":"主辦單位與售票平台",
+            "Index":[
+                {"type":"a","text":"大鴻藝術facebook","href":"https://www.facebook.com/bigart.tw/?locale=zh_TW"},
+                {"type":"a","text":"大鴻藝術 instagram","href":"https://www.instagram.com/bigart.staff/"},
+                {"type":"mail","text":"大鴻藝術 mail","href":"contact@abigart.com"},
+                {"type":"spacer","height":20},
+                {"type":"a","text":"遠大 facebook","href":"https://www.facebook.com/ticketplusasia/?locale=zh_TW"},
+                {"type":"a","text":"遠大 instagram","href":"https://www.instagram.com/ticketplusasia/"},
+                {"type":"mail","text":"遠大 mail","href":"service@farentasia.com"},
+                {"type":"a","text":"遠大售票系統","href":"https://ticketplus.com.tw/"}
+            ]
+        }
+    ]
+}
