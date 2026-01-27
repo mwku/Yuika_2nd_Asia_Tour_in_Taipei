@@ -1,5 +1,7 @@
 let IDList = [];
 let IsMove = false;
+let isCentering = false;
+let centeringTimeout = null; 
 
 function CreateIDList(){
     fetch("static/json/data.json")
@@ -21,21 +23,27 @@ function CreateIDList(){
 function initScrollDetection() {
     const container = document.getElementById("background");
     let ticking = false;
+    let scrollTimeout;
     
     container.addEventListener("scroll", function() {
         console.log(IsMove);
         if (!ticking && !IsMove) {
-            window.requestAnimationFrame(() => {
-                checkVisibleSection();
-                ticking = false;
-            });
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (!isCentering) {
+                    window.requestAnimationFrame(() => {
+                        checkVisibleSection();
+                        ticking = false;
+                    });
+                }
+            }, 150);
             ticking = true;
         }
-    });
+    }, { passive: true });
 }
 
 function checkVisibleSection() {
-    const viewportMiddle = window.innerHeight*0.15;
+    const viewportMiddle = window.innerHeight*offsetPercent;
     let closestElement = null;
     let closestDistance = Infinity;
     
@@ -61,24 +69,16 @@ function checkVisibleSection() {
 function ToCenter(id) {
     const BottomBarElement = document.getElementById("nav-" + id);
     
-    if(BottomBarElement){
+    if(BottomBarElement && !isCentering){
+        isCentering = true;
+        clearTimeout(centeringTimeout);
+        
         const bottomBarContainer = document.getElementById("bottom-bar-container");
         
         if(BottomBarElement.id !== "nav-" + IDList[0] && BottomBarElement.id !== "nav-" + IDList[IDList.length -1]){
-            // To center
-            // const containerWidth = bottomBarContainer.offsetWidth;
-            // const linkLeft = BottomBarElement.offsetLeft;
-            // const linkWidth = BottomBarElement.offsetWidth;
-            // const scrollPosition = linkLeft - (containerWidth / 2) + (linkWidth / 2);
-            // bottomBarContainer.scrollTo({
-            //     left: scrollPosition,
-            //     behavior: 'smooth'
-            // });
-            // To center
             const containerRect = bottomBarContainer.getBoundingClientRect();
             const elementRect = BottomBarElement.getBoundingClientRect();
             
-            // 計算元素相對於容器的位置
             const elementCenter = elementRect.left - containerRect.left + elementRect.width / 2;
             const containerCenter = containerRect.width / 2;
             const scrollOffset = elementCenter - containerCenter;
@@ -108,7 +108,11 @@ function ToCenter(id) {
             }
         }
         BottomBarElement.className = "active";
-        BottomBarElement.style.color = "#000097"
+        BottomBarElement.style.color = "#000097";
+        
+        centeringTimeout = setTimeout(() => {
+            isCentering = false;
+        }, 150);
     }
 }
 function MoveTo(id){
