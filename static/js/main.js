@@ -26,7 +26,7 @@ function initializeBackground() {
             for (let line of cellData["Index"]) {
                 if(line["type"] === "p"){
                     let text="";
-                    if(window.innerWidth <= 550){
+                    if(window.innerWidth <= TextWeight){
                          for(let i =0; i < line["text"].length; i++){
                             if(i === line["text"].length -1){
                                 text += line["text"][i];
@@ -67,13 +67,12 @@ function initializeBackground() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    
 
     initializeBackground();
     // resizeBackground();
-    let isListenerAdded = false;
-    if (!isListenerAdded) {
-        window.addEventListener("resize", resizeBackground);
-        isListenerAdded = true;
-    }
+    // let isListenerAdded = false;
+    // if (!isListenerAdded) {
+    //     window.addEventListener("resize", resizeBackground);
+    //     isListenerAdded = true;
+    // }
 })  

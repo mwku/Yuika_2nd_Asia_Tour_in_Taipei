@@ -66,12 +66,25 @@ function ToCenter(id) {
         
         if(BottomBarElement.id !== "nav-" + IDList[0] && BottomBarElement.id !== "nav-" + IDList[IDList.length -1]){
             // To center
-            const containerWidth = bottomBarContainer.offsetWidth;
-            const linkLeft = BottomBarElement.offsetLeft;
-            const linkWidth = BottomBarElement.offsetWidth;
-            const scrollPosition = linkLeft - (containerWidth / 2) + (linkWidth / 2);
+            // const containerWidth = bottomBarContainer.offsetWidth;
+            // const linkLeft = BottomBarElement.offsetLeft;
+            // const linkWidth = BottomBarElement.offsetWidth;
+            // const scrollPosition = linkLeft - (containerWidth / 2) + (linkWidth / 2);
+            // bottomBarContainer.scrollTo({
+            //     left: scrollPosition,
+            //     behavior: 'smooth'
+            // });
+            // To center
+            const containerRect = bottomBarContainer.getBoundingClientRect();
+            const elementRect = BottomBarElement.getBoundingClientRect();
+            
+            // 計算元素相對於容器的位置
+            const elementCenter = elementRect.left - containerRect.left + elementRect.width / 2;
+            const containerCenter = containerRect.width / 2;
+            const scrollOffset = elementCenter - containerCenter;
+            
             bottomBarContainer.scrollTo({
-                left: scrollPosition,
+                left: bottomBarContainer.scrollLeft + scrollOffset,
                 behavior: 'smooth'
             });
         }else if(BottomBarElement.id === "nav-" + IDList[0]){

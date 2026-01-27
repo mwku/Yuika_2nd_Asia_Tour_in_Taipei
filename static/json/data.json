@@ -10,13 +10,24 @@
             ]
         },
         {
+            "Title":"『ユイカ』相關資訊",
+            "ID":"YuikaInfo",
+            "Index":[
+                {"type":"a","text":"官方網站","href":"https://www.universal-music.co.jp/yuika/"},
+                {"type":"a","text":"『ユイカ』TikTok","href":"https://www.tiktok.com/@yuika_singuitar"},
+                {"type":"a","text":"『ユイカ』instagram","href":"https://www.instagram.com/yuika_singuitar/"},
+                {"type":"a","text":"『ユイカ』twitter","href":"https://x.com/yuika_singuitar"},
+                {"type":"a","text":"『ユイカ』YouTube","href":"https://www.youtube.com/channel/UC2iRI4qf-H_BdpsS8mMEjZQ"}
+            ]
+        },
+        {
             "Title":"Zepp New Taipei",
             "ID":"ZeppNewTaipei",
             "Index":[
                 {"type":"p","space":8,"text":["地址:新北市新莊區新北大道四段3號8樓","(宏匯廣場)"]},
-                {"type":"p","space":8,"text":["交通:搭乘機捷至「新莊副都心站」下車，","步行約5分鐘即可抵達。"]},
+                {"type":"p","space":8,"text":["交通:搭乘機捷至「新莊副都心站」下車，","再步行約5分鐘即可抵達。"]},
                 {"type":"spacer","height":10},
-                {"type":"img","src":"./img/yuika_online_store_test.png","alt":"Zepp New Taipei 圖片"},
+                {"type":"img","src":"./img/map.png","alt":"Zepp New Taipei 交通圖"},
                 {"type":"spacer","height":30},
                 {"type":"a","text":"Zepp官方網站","href":"https://www.zepp.co.jp/hall/newtaipei/"},
                 {"type":"a","text":"Zepp facebook","href":"https://www.facebook.com/zeppnewtaipei/?locale=zh_TW"},
