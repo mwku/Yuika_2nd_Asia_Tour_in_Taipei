@@ -3,6 +3,7 @@
     "Cells":[
         {
             "Title":"相關資訊",
+            "PlayList":false,
             "ID":"RecentInfo",
             "Index":[
                 {"type":"p","space":0,"text":["2026/2/23、24 VIP Pass抽選開放登記"]},
@@ -13,6 +14,7 @@
         },
         {
             "Title":"Zepp New Taipei",
+            "PlayList":false,
             "ID":"ZeppNewTaipei",
             "Index":[
                 {"type":"p","space":8,"text":["地址:新北市新莊區新北大道四段3號8樓","(宏匯廣場)"]},
@@ -29,6 +31,7 @@
         },
         {
             "Title":"5/30歌單",
+            "PlayList":true,
             "ID":"Setlist530",
             "Index":[
 
@@ -36,13 +39,15 @@
         },
         {
             "Title":"5/31歌單",
+            "PlayList":true,
             "ID":"Setlist531",
             "Index":[
-                
+
             ]
         },
         {
             "Title":"『ユイカ』相關資訊",
+            "PlayList":false,
             "ID":"YuikaInfo",
             "Index":[
                 {"type":"a","text":"官方網站","href":"https://www.universal-music.co.jp/yuika/"},
@@ -54,6 +59,7 @@
         },
         {
             "Title":"主辦單位與售票平台",
+            "PlayList":false,
             "ID":"OrganizerAndTicketing",
             "Index":[
                 {"type":"a","text":"大鴻藝術facebook","href":"https://www.facebook.com/bigart.tw/?locale=zh_TW"},
