@@ -25,7 +25,7 @@ function initScrollDetection() {
     let ticking = false;
     let scrollTimeout;
     
-    container.addEventListener("scroll", function() {
+    container.addEventListener("scrollend", function() {
         console.log(IsMove);
         if (!ticking && !IsMove) {
             clearTimeout(scrollTimeout);
@@ -36,7 +36,7 @@ function initScrollDetection() {
                         ticking = false;
                     });
                 }
-            }, 150);
+            }, 50);
             ticking = true;
         }
     }, { passive: true });
@@ -147,7 +147,6 @@ function AddListener(id){
         BottomBarElement.addEventListener("click", function() {
             IsMove = true;
             MoveTo(id);
-            // IsMove = false;
         });
     }
 }
