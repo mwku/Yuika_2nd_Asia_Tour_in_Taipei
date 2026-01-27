@@ -53,7 +53,7 @@ body{
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 5px;
-    scroll-margin-top: 200px;
+    scroll-margin-top: 15vh;
 }
 .divider {
     width: 100%;

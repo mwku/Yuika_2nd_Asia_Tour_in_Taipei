@@ -11,7 +11,7 @@ function initializeBackground() {
     fetch("static/json/data.json")
     .then(response => response.json())
     .then(data => {
-        let TopImage = `<img src="${data["TopImage"]}" alt="Yuika 2nd Asia Tour in Taipei" class="top-image"></img>`;
+        let TopImage = `<img id="TopImage" src="${data["TopImage"]}" alt="Yuika 2nd Asia Tour in Taipei" class="top-image"></img>`;
         backgroundDiv.insertAdjacentHTML("beforeend", TopImage);
         
         const bottomBarContainer = document.getElementById("bottom-bar-container");
@@ -40,7 +40,7 @@ function initializeBackground() {
             bottomBarContainer.insertAdjacentHTML("beforeend", bottomBar);
             AddListener(cellData["ID"]);
         }
-        const spacerDiv = `<div style="height: 20%; width: 1px; flex-shrink: 0"></div>`;
+        const spacerDiv = `<div style="height: 50%; width: 1px; flex-shrink: 0"></div>`;
         backgroundDiv.insertAdjacentHTML("beforeend", spacerDiv);
 
         CreateIDList();//Bottom Bar
