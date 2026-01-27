@@ -5,15 +5,16 @@
             "Title":"近期資訊",
             "ID":"RecentInfo",
             "Index":[
-                {"type":"p","text":"2026/2/23、24 VIP Pass抽選開放登記"},
-                {"type":"p","text":"2026/5/30、31<br>Yuika 2nd Asia Tour in Taipei 演唱會"}
+                {"type":"p","space":0,"text":["2026/2/23、24 VIP Pass抽選開放登記"]},
+                {"type":"p","space":0,"text":["2026/5/30、31","Yuika 2nd Asia Tour in Taipei 演唱會"]}
             ]
         },
         {
             "Title":"Zepp New Taipei",
             "ID":"ZeppNewTaipei",
             "Index":[
-                {"type":"p","text":"地址:新北市新莊區新北大道四段3號8樓<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(宏匯廣場)"},
+                {"type":"p","space":8,"text":["地址:新北市新莊區新北大道四段3號8樓","(宏匯廣場)"]},
+                {"type":"p","space":8,"text":["交通:搭乘機捷至「新莊副都心站」下車，","步行約5分鐘即可抵達。"]},
                 {"type":"spacer","height":10},
                 {"type":"img","src":"./img/yuika_online_store_test.png","alt":"Zepp New Taipei 圖片"},
                 {"type":"spacer","height":30},

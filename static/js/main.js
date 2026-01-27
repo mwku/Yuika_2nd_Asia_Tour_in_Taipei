@@ -25,7 +25,22 @@ function initializeBackground() {
             IDList.push(cellData["ID"]);
             for (let line of cellData["Index"]) {
                 if(line["type"] === "p"){
-                    cellDiv += `<p class="cell-descripition">${line["text"]}</p>`;
+                    let text="";
+                    if(window.innerWidth <= 550){
+                         for(let i =0; i < line["text"].length; i++){
+                            if(i === line["text"].length -1){
+                                text += line["text"][i];
+                            }else{
+                                text += line["text"][i] + "<br>"+"&nbsp;".repeat(line["space"]);
+                            }
+                         }
+                    }
+                    else{
+                        for(let i =0; i < line["text"].length; i++){
+                            text += line["text"][i];
+                        }
+                    }
+                    cellDiv += `<p class="cell-descripition">${text}</p>`;
                 }else if(line["type"] === "spacer"){
                     cellDiv += `<div style="height: ${line["height"]}px; width: 1px; flex-shrink: 0"></div>`;
                 }
