@@ -17,10 +17,11 @@ function initializeBackground() {
         const bottomBarContainer = document.getElementById("bottom-bar-container");
 
         for (let cellData of data["Cells"]) {
-            let cellDiv = `<div class="cell">
+            let cellDiv = `<div class="cell" id="cell-${cellData["ID"]}">
                 <p class="cell-title" id="${cellData["ID"]}">${cellData["Title"]}</p>
-                <hr class="divider">`
-            let bottomBar = `<a id="nav-${cellData["ID"]}" href="#${cellData["ID"]}">${cellData["Title"]}</a>`
+                <hr class="divider">`;
+            let bottomBar = `<p id="nav-${cellData["ID"]}">${cellData["Title"]}</a>`;// href="#${cellData["ID"]}"
+
             IDList.push(cellData["ID"]);
             for (let line of cellData["Index"]) {
                 if(line["type"] === "p"){

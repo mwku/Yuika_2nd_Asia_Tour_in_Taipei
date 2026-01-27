@@ -7,10 +7,8 @@ function CreateIDList(){
         .then(data => {
             for (let cellData of data["Cells"]) {
                 IDList.push(cellData["ID"]);
-                // console.log(cellData["ID"]);
             }
-            // ToCenter(IDList[2]); // For testing
-            initIntersectionObserver();
+            initScrollDetection();
             const firstElement = document.getElementById("nav-" + IDList[0]);
             if(firstElement){
                 firstElement.className = "active";
@@ -19,41 +17,46 @@ function CreateIDList(){
     })
 }
 
-function initIntersectionObserver() {
-    const backgroundDiv = document.getElementById("background");
-    const topimage = document.getElementById("TopImage");
-    // console.log(topimage.offsetHeight)
-    console.log(topimage);
-    topimage.onload = function() {
-            console.log("圖片載入完成, 高度:", topimage.offsetHeight);
-            CreateIDList(); // 圖片載入後才執行
-        };
-    // const TopArea = topimage.offsetHeight+30-DetectAreaHight/2;
-    // const BottomArea = backgroundDiv.offsetHeight - DetectAreaHight/2;
-    // console.log("TopArea:", TopArea, "BottomArea:", BottomArea);
-    const observerOptions = {
-        root: backgroundDiv,
-        rootMargin: `-${window.innerHeight * 0.1}px 0px -${window.innerHeight * 0.8}px 0px`,
-        threshold: 0
-    };
+
+function initScrollDetection() {
+    const container = document.getElementById("background");
+    let ticking = false;
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !IsMove) {
-                const cellId = entry.target.id;
-                console.log("進入中間區域:", cellId);
-                ToCenter(cellId);
-            }
-        });
-    }, observerOptions);
-    
-    IDList.forEach(id => {
-        const cellElement = document.getElementById(id);
-        if (cellElement) {
-            observer.observe(cellElement);
+    container.addEventListener("scroll", function() {
+        console.log(IsMove);
+        if (!ticking && !IsMove) {
+            window.requestAnimationFrame(() => {
+                checkVisibleSection();
+                ticking = false;
+            });
+            ticking = true;
         }
     });
 }
+
+function checkVisibleSection() {
+    const viewportMiddle = window.innerHeight*0.15;
+    let closestElement = null;
+    let closestDistance = Infinity;
+    
+    IDList.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            const rect = element.getBoundingClientRect();
+            const elementMiddle = rect.top + rect.height / 2;
+            const distance = Math.abs(elementMiddle - viewportMiddle);
+            if (distance < closestDistance && rect.top < window.innerHeight && rect.bottom > 0) {
+                closestDistance = distance;
+                closestElement = id;
+            }
+        }
+    });
+    
+    if (closestElement) {
+        ToCenter(closestElement);
+    }
+}
+
 
 function ToCenter(id) {
     const BottomBarElement = document.getElementById("nav-" + id);
@@ -95,14 +98,39 @@ function ToCenter(id) {
         BottomBarElement.style.color = "#000097"
     }
 }
+function MoveTo(id){
+    const cellElement = document.getElementById(id);
+    const backgroundDiv = document.getElementById("background");
+    if(cellElement){
+        // IsMove = true;
+        const elementTop = cellElement.offsetTop;
+        const offset = window.innerHeight * offsetPercent;
+        const targetPosition = elementTop - offset;
 
+        backgroundDiv.scrollTo({
+            top: targetPosition,
+            behavior: "smooth"
+        });
+        ToCenter(id);
+        let scrollTimeout;
+        const onScroll = () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                IsMove = false;
+                backgroundDiv.removeEventListener('scroll', onScroll);
+            }, 150);
+        };
+        
+        backgroundDiv.addEventListener('scroll', onScroll);
+    }
+}
 function AddListener(id){
     const BottomBarElement = document.getElementById("nav-" + id);
     if(BottomBarElement){
         BottomBarElement.addEventListener("click", function() {
             IsMove = true;
-            ToCenter(id);
-            IsMove = false;
+            MoveTo(id);
+            // IsMove = false;
         });
     }
 }

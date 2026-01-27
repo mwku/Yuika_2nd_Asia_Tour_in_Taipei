@@ -1,2 +1,2 @@
 const BackgroundMrgin = 15;
-const DetectAreaHight = 30;
+const offsetPercent = 0.15;

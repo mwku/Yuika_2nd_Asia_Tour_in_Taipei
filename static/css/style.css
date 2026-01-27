@@ -151,7 +151,7 @@ body{
 .bottom-bar-container::-webkit-scrollbar {
     display: none;
 }
-.bottom-bar-container a{
+.bottom-bar-container p{
     flex-shrink: 0;
     /* min-width: 100px; */
     /* width: 100px; */
@@ -175,7 +175,7 @@ body{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.bottom-bar-container a:hover{
+.bottom-bar-container p:hover{
     color: #000097;
 }
 .bottom-bar-container .active{
