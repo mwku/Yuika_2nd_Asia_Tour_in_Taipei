@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
 
     initializeBackground();
-    resizeBackground();
+    // resizeBackground();
     let isListenerAdded = false;
     if (!isListenerAdded) {
         window.addEventListener("resize", resizeBackground);
