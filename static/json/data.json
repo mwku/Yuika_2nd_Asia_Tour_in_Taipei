@@ -2,22 +2,13 @@
     "TopImage":"./img/top.png",
     "Cells":[
         {
-            "Title":"近期資訊",
+            "Title":"相關資訊",
             "ID":"RecentInfo",
             "Index":[
                 {"type":"p","space":0,"text":["2026/2/23、24 VIP Pass抽選開放登記"]},
-                {"type":"p","space":0,"text":["2026/5/30、31","Yuika 2nd Asia Tour in Taipei 演唱會"]}
-            ]
-        },
-        {
-            "Title":"『ユイカ』相關資訊",
-            "ID":"YuikaInfo",
-            "Index":[
-                {"type":"a","text":"官方網站","href":"https://www.universal-music.co.jp/yuika/"},
-                {"type":"a","text":"『ユイカ』TikTok","href":"https://www.tiktok.com/@yuika_singuitar"},
-                {"type":"a","text":"『ユイカ』instagram","href":"https://www.instagram.com/yuika_singuitar/"},
-                {"type":"a","text":"『ユイカ』twitter","href":"https://x.com/yuika_singuitar"},
-                {"type":"a","text":"『ユイカ』YouTube","href":"https://www.youtube.com/channel/UC2iRI4qf-H_BdpsS8mMEjZQ"}
+                {"type":"a","text":"VIP Pass抽選登記","href":"https://ticketplus.com.tw/activity/25f39ee3ca4de91dbdf2f9cb615305f7"},
+                {"type":"p","space":0,"text":["5/30 17:00入場18:00開演"]},
+                {"type":"p","space":0,"text":["5/31 14:00入場15:00開演"]}
             ]
         },
         {
@@ -34,6 +25,31 @@
                 {"type":"a","text":"Zepp instagram","href":"https://www.instagram.com/zeppnewtaipei/"},
                 {"type":"mail","text":"Zepp mail","href":"inquiry.tw@zepp.co.jp"},
                 {"type":"a","text":"google map  (台北車站-Zepp New Taipei)","href":"https://www.google.com/maps/dir/台北車站捷運站+100臺北市中正區忠孝西路一段/Zepp+New+Taipei+242新北市新莊區新北大道四段3號8樓/@25.0574708,121.4595517,14z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3442a965e1aebc47:0xfc079d9e81a5d9c6!2m2!1d121.5156511!2d25.0467151!1m5!1m1!1s0x3442a914b663455b:0xee6cea3890a8418f!2m2!1d121.4494801!2d25.0597396!3e3?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D"}
+            ]
+        },
+        {
+            "Title":"5/30歌單",
+            "ID":"Setlist530",
+            "Index":[
+
+            ]
+        },
+        {
+            "Title":"5/31歌單",
+            "ID":"Setlist531",
+            "Index":[
+                
+            ]
+        },
+        {
+            "Title":"『ユイカ』相關資訊",
+            "ID":"YuikaInfo",
+            "Index":[
+                {"type":"a","text":"官方網站","href":"https://www.universal-music.co.jp/yuika/"},
+                {"type":"a","text":"『ユイカ』TikTok","href":"https://www.tiktok.com/@yuika_singuitar"},
+                {"type":"a","text":"『ユイカ』instagram","href":"https://www.instagram.com/yuika_singuitar/"},
+                {"type":"a","text":"『ユイカ』twitter","href":"https://x.com/yuika_singuitar"},
+                {"type":"a","text":"『ユイカ』YouTube","href":"https://www.youtube.com/channel/UC2iRI4qf-H_BdpsS8mMEjZQ"}
             ]
         },
         {
