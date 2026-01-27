@@ -14,6 +14,8 @@
             "ID":"ZeppNewTaipei",
             "Index":[
                 {"type":"p","text":"地址:新北市新莊區新北大道四段3號8樓<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(宏匯廣場)"},
+                {"type":"spacer","height":10},
+                {"type":"img","src":"./img/yuika_online_store_test.png","alt":"Zepp New Taipei 圖片"},
                 {"type":"spacer","height":30},
                 {"type":"a","text":"Zepp官方網站","href":"https://www.zepp.co.jp/hall/newtaipei/"},
                 {"type":"a","text":"Zepp facebook","href":"https://www.facebook.com/zeppnewtaipei/?locale=zh_TW"},

@@ -33,6 +33,8 @@ function initializeBackground() {
                 }
                 else if(line["type"] === "mail"){
                     cellDiv += `<a class="cell-a" href="mailto:${line["href"]}">${line["text"]}</a>`;
+                }else if(line["type"] === "img"){
+                    cellDiv += `<img class="cell-image" src="${line["src"]}" alt="${line["alt"]}"></img>`;
                 }
             }
             cellDiv += `</div>`;
