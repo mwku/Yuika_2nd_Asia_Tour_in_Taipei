@@ -65,8 +65,11 @@ body{
     flex-direction: column;
 }
 .cell-title{
+    flex-shrink: 0;
+    height: 40px;
     font-size: 30px;
     font-weight: bold;
+    text-justify: center;
     margin-bottom: 5px;
     scroll-margin-top: 15vh;
 }
@@ -109,6 +112,23 @@ body{
     margin: 0;
     margin-top: 10px;
     padding: 0;
+}
+.cell-play-button{
+    width: 20px;
+    height: 20px;
+    /* padding: 5px; */
+    border: #ffffff 5px solid;
+    border-radius: 50%;
+    background-color: #ffffff;
+
+    flex-shrink: 0;
+    /* margin-left: 10px; */
+    margin-top: 10px;
+    cursor: pointer;
+    background-image: url(../../img/play.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .info-divider-container{

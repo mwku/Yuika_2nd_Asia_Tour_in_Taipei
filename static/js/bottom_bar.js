@@ -26,7 +26,7 @@ function initScrollDetection() {
     let scrollTimeout;
     
     container.addEventListener("scrollend", function() {
-        console.log(IsMove);
+        // console.log(IsMove);
         if (!ticking && !IsMove) {
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {

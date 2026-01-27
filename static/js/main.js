@@ -20,6 +20,10 @@ function initializeBackground() {
             let cellDiv = `<div class="cell" id="cell-${cellData["ID"]}">
                 <p class="cell-title" id="${cellData["ID"]}">${cellData["Title"]}</p>
                 <hr class="divider">`;
+            if(cellData["PlayList"]){
+                // console.log("PlayList detected for cell ID:", cellData["ID"]);
+                cellDiv += `<div class="cell-play-button" id="play-button-${cellData["ID"]}"></div>`
+            }
             let bottomBar = `<p id="nav-${cellData["ID"]}">${cellData["Title"]}</a>`;// href="#${cellData["ID"]}"
 
             IDList.push(cellData["ID"]);
@@ -51,6 +55,21 @@ function initializeBackground() {
                     cellDiv += `<a class="cell-a" href="mailto:${line["href"]}">${line["text"]}</a>`;
                 }else if(line["type"] === "img"){
                     cellDiv += `<img class="cell-image" src="${line["src"]}" alt="${line["alt"]}"></img>`;
+                }else if(line["type"] === "music"){
+                    if(String(line["id"]) === "-1"){
+                        cellDiv += `<p class="cell-descripition mc-text">${line["text"]}</p>`;
+                    }else if(String(line["id"]) === "-2"){
+                        cellDiv += `<p class="cell-descripition music-undefined-text">${line["name"]}(音檔待下載)</p>`;
+                    }else{
+                        const musicInfo = MusicData[line["id"]];
+                        if(cellData["ID"] === "Setlist530"){
+                            PlayList530.push(line["id"]);
+                        }else if(cellData["ID"] === "Setlist531"){
+                            PlayList531.push(line["id"]);
+                        }
+                        cellDiv += `<p class="cell-descripition music-text">${musicInfo[0]}</p>`;
+                        
+                    }
                 }
             }
             cellDiv += `</div>`;
@@ -60,7 +79,14 @@ function initializeBackground() {
         }
         const spacerDiv = `<div style="height: 50%; width: 1px; flex-shrink: 0"></div>`;
         backgroundDiv.insertAdjacentHTML("beforeend", spacerDiv);
-
+        for (let cellData of data["Cells"]) {
+            if(cellData["PlayList"]){
+                document.getElementById(`play-button-${cellData["ID"]}`).addEventListener("click",function(){
+                    // console.log(cellData["ID"]);
+                    Play(cellData["ID"]);
+                })
+            }
+        }
         CreateIDList();//Bottom Bar
     })
 }
