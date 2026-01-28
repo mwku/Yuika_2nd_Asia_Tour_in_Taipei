@@ -67,11 +67,16 @@ function initializeBackground() {
                             }, 100);
                         }
                         const musicInfo = MusicData[String(line["id"])];
-                        if(cellData["ID"] === "Setlist530"){
-                            PlayList530.push(line["id"]);
-                        }else if(cellData["ID"] === "Setlist531"){
-                            PlayList531.push(line["id"]);
+                        // if(cellData["ID"] === "Setlist530"){
+                        //     PlayList530.push(line["id"]);
+                        // }else if(cellData["ID"] === "Setlist531"){
+                        //     PlayList531.push(line["id"]);
+                        // }
+                        if(!PlayingList[cellData["ID"]]){
+                            PlayingList[cellData["ID"]] = [];
+                            NowPlayingByID[cellData["ID"]] = 0;
                         }
+                        PlayingList[cellData["ID"]].push(line["id"]);
                         cellDiv += `<p class="cell-descripition music-text">${musicInfo[0]}</p>`;
                         
                     }
