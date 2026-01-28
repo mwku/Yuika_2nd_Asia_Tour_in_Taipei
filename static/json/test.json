@@ -1,5 +1,8 @@
 [
     {"type":"music","id":"0"},
     {"type":"music","id":"-1","text":"MC"},
-    {"type":"music","id":"-2","name":"undefined"}
+    {"type":"music","id":"-2","name":"undefined"},
+    {"type":"music","id":"0"},
+    {"type":"music","id":"-1","text":"安可曲"},
+    {"type":"music","id":"1"}
 ]

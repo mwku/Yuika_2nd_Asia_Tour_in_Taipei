@@ -4,8 +4,6 @@ function resizeBackground() {
     backgroundDiv.style.width = String(Number(window.innerWidth) - BackgroundMrgin*2) + "px";
 }
 
-
-
 function initializeBackground() {
     const backgroundDiv = document.getElementById("background");
     fetch("static/json/data.json")
@@ -67,7 +65,7 @@ function initializeBackground() {
                             NowPlayingByID[cellData["ID"]] = 0;
                         }
                         PlayingList[cellData["ID"]].push(line["id"]);
-                        cellDiv += `<div class="cell-descripition music-text" onclick="insert('${cellData["ID"]}','${line["id"]}')" style="cursor:pointer;">${musicInfo[0]}</div>`;
+                        cellDiv += `<div class="cell-descripition music-text" onclick="insert('${cellData["ID"]}','${line["id"]}')" style="cursor:pointer;text-decoration: underline;">${musicInfo[0]}</div>`;
                         
                     }
                 }
@@ -106,10 +104,5 @@ document.addEventListener("DOMContentLoaded", function() {
         initializeBackground();
     });
     window.addEventListener("beforeunload",SaveState);
-    // resizeBackground();
-    // let isListenerAdded = false;
-    // if (!isListenerAdded) {
-    //     window.addEventListener("resize", resizeBackground);
-    //     isListenerAdded = true;
-    // }
+    
 })  

@@ -68,10 +68,7 @@
             "PlayList":true,
             "ID":"Setlist530",
             "Index":[
-                {"type":"p","space":0,"text":["將在當日演唱會結束後儘速更新"]},
-                {"type":"music","id":"1"},
-                {"type":"music","id":"-1","text":"MC"},
-                {"type":"music","id":"0"}
+                {"type":"p","space":0,"text":["將在當日演唱會結束後儘速更新"]}
                 
             ]
         },
@@ -80,10 +77,7 @@
             "PlayList":true,
             "ID":"Setlist531",
             "Index":[
-                {"type":"p","space":0,"text":["將在當日演唱會結束後儘速更新"]},
-                {"type":"music","id":"0"},
-                {"type":"music","id":"-1","text":"安可曲"},
-                {"type":"music","id":"1"}
+                {"type":"p","space":0,"text":["將在當日演唱會結束後儘速更新"]}
             ]
         },
         {

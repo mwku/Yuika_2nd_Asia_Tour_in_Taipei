@@ -5,10 +5,6 @@ let PlayingList = {};
 let NowPlayingByID={};
 let PlayingAudioByID={};
 
-// if(localStorage.getItem("")){}
-
-
-
 function PlaySong(songID, audioObject=null){
     return new Promise((resolve) => {
         // console.log("Playing song ID:", songID, "on audio object:", audioObject);
@@ -37,6 +33,11 @@ async function Play(PlayListP,isContinue=true,){
     if(String(NowPlaying)===PlayListP){
         return;
     }else{
+        const element = document.getElementById(`play-button-${PlayListP}`);
+        if(!PlayingList[PlayListP] || PlayingList[PlayListP].length === 0){
+            element.style.backgroundImage = "url(./img/play.png)";
+            return;
+        }
         for(let key in NowPlayingByID){
             if(String(key)!==String(PlayListP)){
                 Stop(key);
@@ -44,12 +45,13 @@ async function Play(PlayListP,isContinue=true,){
         }
         // console.log("Start playing:", PlayListP);
         NowPlaying=PlayListP;
-        const element = document.getElementById(`play-button-${PlayListP}`);
+        
         element.style.backgroundImage = "url(./img/pause.png)";
         if(NowPlayingByID[PlayListP] && isContinue){
             await continuePlaying(PlayListP);
             NowPlayingByID[PlayListP]=(NowPlayingByID[PlayListP]+1);
         }
+        
         while(String(NowPlaying)===String(PlayListP)){
             // console.log("Playing playlist:", PlayListP);
             NowPlayingByID[PlayListP]=NowPlayingByID[PlayListP]%PlayingList[PlayListP].length;
@@ -73,14 +75,6 @@ function Stop(PlayListP){
     
 }
 
-/*
-musicdata{
-    id:{
-        at:listindex
-        currentTime:time
-    }
-}
- */
 function SaveState(){
     let SaveData = {};
     for(let key in PlayingAudioByID){
