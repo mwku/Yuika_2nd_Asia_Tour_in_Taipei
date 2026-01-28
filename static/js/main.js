@@ -57,27 +57,22 @@ function initializeBackground() {
                     cellDiv += `<img class="cell-image" src="${line["src"]}" alt="${line["alt"]}"></img>`;
                 }else if(line["type"] === "music"){
                     if(String(line["id"]) === "-1"){
-                        cellDiv += `<p class="cell-descripition mc-text">${line["text"]}</p>`;
+                        cellDiv += `<div class="cell-descripition mc-text">${line["text"]}</div>`;
                     }else if(String(line["id"]) === "-2"){
-                        cellDiv += `<p class="cell-descripition music-undefined-text">${line["name"]}(音檔待下載)</p>`;
+                        cellDiv += `<div class="cell-descripition music-undefined-text">${line["name"]}(音檔待下載)</div>`;
                     }else{
-                        // console.log(line["id"]);
                         while(MusicData.length<26){
                             setTimeout(() => {
+                                
                             }, 100);
                         }
                         const musicInfo = MusicData[String(line["id"])];
-                        // if(cellData["ID"] === "Setlist530"){
-                        //     PlayList530.push(line["id"]);
-                        // }else if(cellData["ID"] === "Setlist531"){
-                        //     PlayList531.push(line["id"]);
-                        // }
                         if(!PlayingList[cellData["ID"]]){
                             PlayingList[cellData["ID"]] = [];
                             NowPlayingByID[cellData["ID"]] = 0;
                         }
                         PlayingList[cellData["ID"]].push(line["id"]);
-                        cellDiv += `<p class="cell-descripition music-text">${musicInfo[0]}</p>`;
+                        cellDiv += `<div class="cell-descripition music-text" onclick="insert('${cellData["ID"]}','${line["id"]}')" >${musicInfo[0]}</div>`;
                         
                     }
                 }
