@@ -22,7 +22,7 @@ function initializeBackground() {
                 <hr class="divider">`;
             if(cellData["PlayList"]){
                 // console.log("PlayList detected for cell ID:", cellData["ID"]);
-                cellDiv += `<div class="cell-play-button" id="play-button-${cellData["ID"]}"></div>`
+                cellDiv += `<div class="cell-play-button" style="background-image: url(../../img/play.png);" id="play-button-${cellData["ID"]}"></div>`
             }
             let bottomBar = `<p id="nav-${cellData["ID"]}">${cellData["Title"]}</a>`;// href="#${cellData["ID"]}"
 
@@ -61,7 +61,12 @@ function initializeBackground() {
                     }else if(String(line["id"]) === "-2"){
                         cellDiv += `<p class="cell-descripition music-undefined-text">${line["name"]}(音檔待下載)</p>`;
                     }else{
-                        const musicInfo = MusicData[line["id"]];
+                        // console.log(line["id"]);
+                        while(MusicData.length<26){
+                            setTimeout(() => {
+                            }, 100);
+                        }
+                        const musicInfo = MusicData[String(line["id"])];
                         if(cellData["ID"] === "Setlist530"){
                             PlayList530.push(line["id"]);
                         }else if(cellData["ID"] === "Setlist531"){
@@ -82,8 +87,12 @@ function initializeBackground() {
         for (let cellData of data["Cells"]) {
             if(cellData["PlayList"]){
                 document.getElementById(`play-button-${cellData["ID"]}`).addEventListener("click",function(){
-                    // console.log(cellData["ID"]);
-                    Play(cellData["ID"]);
+                    const element_ = document.getElementById(`play-button-${cellData["ID"]}`);
+                    if(element_.style.backgroundImage.includes("play.png")){
+                        Play(cellData["ID"]);
+                    }else{
+                        Stop(cellData["ID"]);
+                    }
                 })
             }
         }

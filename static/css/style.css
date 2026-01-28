@@ -125,7 +125,7 @@ body{
     /* margin-left: 10px; */
     margin-top: 10px;
     cursor: pointer;
-    background-image: url(../../img/play.png);
+    /* background-image: url(../../img/play.png); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
