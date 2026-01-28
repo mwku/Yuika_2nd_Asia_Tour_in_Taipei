@@ -5,13 +5,10 @@ let PlayingList = {};
 let NowPlayingByID={};
 let PlayingAudioByID={};
 
-if(localStorage.getItem("")){}
+// if(localStorage.getItem("")){}
 
-fetch("./static/json/songlist.json")
-    .then(response => response.json())
-    .then(data => {
-        MusicData = data;
-    });
+
+
 function PlaySong(songID, audioObject=null){
     return new Promise((resolve) => {
         // console.log("Playing song ID:", songID, "on audio object:", audioObject);
@@ -22,7 +19,7 @@ function PlaySong(songID, audioObject=null){
 }
 
 function continuePlaying(id){
-    // console.log("continuePlaying:", id);
+    // console.log("continuePlaying:", id);s
     return new Promise((resolve) => {
         PlayingAudioByID[id].addEventListener('ended', () => {resolve();});
         PlayingAudioByID[id].play();
@@ -30,7 +27,7 @@ function continuePlaying(id){
 }
 
 function insert(PlayListP,songID){
-    console.log("Inserting song ID:", songID, "into playlist ID:", PlayListP);
+    // console.log("Inserting song ID:", songID, "into playlist ID:", PlayListP);
     NowPlayingByID[PlayListP]=PlayingList[PlayListP].indexOf(String(songID));
     Stop(PlayListP);
     Play(PlayListP,false);
@@ -51,16 +48,16 @@ async function Play(PlayListP,isContinue=true,){
         element.style.backgroundImage = "url(./img/pause.png)";
         if(NowPlayingByID[PlayListP] && isContinue){
             await continuePlaying(PlayListP);
+            NowPlayingByID[PlayListP]=(NowPlayingByID[PlayListP]+1);
         }
         while(String(NowPlaying)===String(PlayListP)){
             // console.log("Playing playlist:", PlayListP);
-            for(let i=NowPlayingByID[PlayListP]; i<PlayingList[PlayListP].length;i++){
-                NowPlayingByID[PlayListP]=(i+1)%PlayingList[PlayListP].length;
-                await PlaySong(PlayingList[PlayListP][i], PlayListP);
-                if(String(NowPlaying)!==String(PlayListP)){
-                    break;
-                }
+            NowPlayingByID[PlayListP]=NowPlayingByID[PlayListP]%PlayingList[PlayListP].length;
+            await PlaySong(PlayingList[PlayListP][NowPlayingByID[PlayListP]], PlayListP);
+            if(String(NowPlaying)!==String(PlayListP)){
+                break;
             }
+            NowPlayingByID[PlayListP]=(NowPlayingByID[PlayListP]+1);
         }
     }
     
@@ -74,4 +71,41 @@ function Stop(PlayListP){
         element.style.backgroundImage = "url(./img/play.png)";
     }
     
+}
+
+/*
+musicdata{
+    id:{
+        at:listindex
+        currentTime:time
+    }
+}
+ */
+function SaveState(){
+    let SaveData = {};
+    for(let key in PlayingAudioByID){
+        SaveData[key]={
+            at: NowPlayingByID[key],
+            currentTime: PlayingAudioByID[key].currentTime
+        };
+    }
+    if(Object.keys(SaveData).length === 0){
+        return;
+    }
+    localStorage.setItem("musicdata",JSON.stringify(SaveData));
+}
+function LoadState(){
+    if(localStorage.getItem("musicdata")){
+        let SaveData = JSON.parse(localStorage.getItem("musicdata"));
+        // console.log(SaveData);
+        for(let key in SaveData){
+            NowPlayingByID[key]=SaveData[key]["at"];
+            // console.log(PlayingList[key],NowPlayingByID[key]);
+            let songid=PlayingList[key][NowPlayingByID[key]];
+            // console.log(MusicData[String(songid)][1]);
+            PlayingAudioByID[key]=new Audio(MusicData[String(songid)][1]);
+            // console.log("h",PlayingAudioByID[key]);
+            PlayingAudioByID[key].currentTime=SaveData[key]["currentTime"];
+        }
+    }
 }

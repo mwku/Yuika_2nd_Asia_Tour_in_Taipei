@@ -57,22 +57,17 @@ function initializeBackground() {
                     cellDiv += `<img class="cell-image" src="${line["src"]}" alt="${line["alt"]}"></img>`;
                 }else if(line["type"] === "music"){
                     if(String(line["id"]) === "-1"){
-                        cellDiv += `<div class="cell-descripition mc-text">${line["text"]}</div>`;
+                        cellDiv += `<div class="cell-descripition mc-text">--- ${line["text"]} ---</div>`;
                     }else if(String(line["id"]) === "-2"){
                         cellDiv += `<div class="cell-descripition music-undefined-text">${line["name"]}(音檔待下載)</div>`;
                     }else{
-                        while(MusicData.length<26){
-                            setTimeout(() => {
-                                
-                            }, 100);
-                        }
                         const musicInfo = MusicData[String(line["id"])];
                         if(!PlayingList[cellData["ID"]]){
                             PlayingList[cellData["ID"]] = [];
                             NowPlayingByID[cellData["ID"]] = 0;
                         }
                         PlayingList[cellData["ID"]].push(line["id"]);
-                        cellDiv += `<div class="cell-descripition music-text" onclick="insert('${cellData["ID"]}','${line["id"]}')" >${musicInfo[0]}</div>`;
+                        cellDiv += `<div class="cell-descripition music-text" onclick="insert('${cellData["ID"]}','${line["id"]}')" style="cursor:pointer;">${musicInfo[0]}</div>`;
                         
                     }
                 }
@@ -97,13 +92,20 @@ function initializeBackground() {
             }
         }
         CreateIDList();//Bottom Bar
+        LoadState();
     })
 }
 
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    initializeBackground();
+    fetch("./static/json/songlist.json")
+    .then(response => response.json())
+    .then(data => {
+        MusicData = data;
+        initializeBackground();
+    });
+    window.addEventListener("beforeunload",SaveState);
     // resizeBackground();
     // let isListenerAdded = false;
     // if (!isListenerAdded) {
