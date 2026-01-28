@@ -22,7 +22,7 @@ function initializeBackground() {
                 <hr class="divider">`;
             if(cellData["PlayList"]){
                 // console.log("PlayList detected for cell ID:", cellData["ID"]);
-                cellDiv += `<div class="cell-play-button" style="background-image: url(../../img/play.png);" id="play-button-${cellData["ID"]}"></div>`
+                cellDiv += `<div class="cell-play-button" style="background-image: url(./img/play.png);" id="play-button-${cellData["ID"]}"></div>`
             }
             let bottomBar = `<p id="nav-${cellData["ID"]}">${cellData["Title"]}</a>`;// href="#${cellData["ID"]}"
 
