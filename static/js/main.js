@@ -65,7 +65,7 @@ function initializeBackground() {
                             NowPlayingByID[cellData["ID"]] = 0;
                         }
                         PlayingList[cellData["ID"]].push(line["id"]);
-                        cellDiv += `<div class="cell-descripition music-text" onclick="insert('${cellData["ID"]}','${line["id"]}')" style="cursor:pointer;text-decoration: underline;">${musicInfo[0]}</div>`;
+                        cellDiv += `<div class="cell-descripition music-text" id="music-${cellData["ID"]}-${line["id"]}" onclick="insert('${cellData["ID"]}','${line["id"]}')" style="cursor:pointer;text-decoration: underline;">${musicInfo[0]}</div>`;
                         
                     }
                 }

@@ -9,6 +9,7 @@ function PlaySong(songID, audioObject=null){
     return new Promise((resolve) => {
         // console.log("Playing song ID:", songID, "on audio object:", audioObject);
         PlayingAudioByID[audioObject]=new Audio(MusicData[String(songID)][1]);
+        PlayingAudioByID[audioObject].volume=1;
         PlayingAudioByID[audioObject].play();
         PlayingAudioByID[audioObject].addEventListener('ended', () => {resolve();});
     });
@@ -17,8 +18,9 @@ function PlaySong(songID, audioObject=null){
 function continuePlaying(id){
     // console.log("continuePlaying:", id);s
     return new Promise((resolve) => {
-        PlayingAudioByID[id].addEventListener('ended', () => {resolve();});
+        PlayingAudioByID[id].volume=1;
         PlayingAudioByID[id].play();
+        PlayingAudioByID[id].addEventListener('ended', () => {resolve();});
     });
 }
 
@@ -48,14 +50,38 @@ async function Play(PlayListP,isContinue=true,){
         
         element.style.backgroundImage = "url(./img/pause.png)";
         if(NowPlayingByID[PlayListP] && isContinue){
+            NowPlayingByID[PlayListP]=NowPlayingByID[PlayListP]%PlayingList[PlayListP].length;
+            const element = document.getElementById(`music-${PlayListP}-${PlayingList[PlayListP][NowPlayingByID[PlayListP]]}`);
+            if(element){
+                // element.style.borderTop = "2px solid #00000000";
+                // element.style.borderBottom = "2px solid yellow";
+                element.style.color = "yellow";
+            }
             await continuePlaying(PlayListP);
+            if(element){
+                // element.style.border = "none";
+                element.style.color = "#ffffff";
+            }
             NowPlayingByID[PlayListP]=(NowPlayingByID[PlayListP]+1);
         }
         
         while(String(NowPlaying)===String(PlayListP)){
+            
+            // border-top: 2px solid #00000000;
+    // border-bottom: 2px solid yellow ;
             // console.log("Playing playlist:", PlayListP);
             NowPlayingByID[PlayListP]=NowPlayingByID[PlayListP]%PlayingList[PlayListP].length;
+            const element = document.getElementById(`music-${PlayListP}-${PlayingList[PlayListP][NowPlayingByID[PlayListP]]}`);
+            if(element){
+                // element.style.borderTop = "2px solid #00000000";
+                // element.style.borderBottom = "2px solid yellow";
+                element.style.color = "yellow";
+            }
             await PlaySong(PlayingList[PlayListP][NowPlayingByID[PlayListP]], PlayListP);
+            if(element){
+                // element.style.border = "none";
+                element.style.color = "#ffffff";
+            }
             if(String(NowPlaying)!==String(PlayListP)){
                 break;
             }
@@ -69,6 +95,16 @@ function Stop(PlayListP){
         PlayingAudioByID[PlayListP].pause();
         NowPlaying="n";
         const element = document.getElementById(`play-button-${PlayListP}`);
+        const cell = document.getElementById(`cell-${PlayListP}`);
+        if(cell){
+            for(let i=0;i<cell.children.length;i++){
+                let child=cell.children[i];
+                if(child.style.color==="yellow"){
+                    // child.style.border="none";
+                    child.style.color="#ffffff";
+                }
+            }
+        }
         // element.onclick = () => Play(PlayListP);
         element.style.backgroundImage = "url(./img/play.png)";
     }
