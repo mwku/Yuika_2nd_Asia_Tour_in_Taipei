@@ -60,7 +60,8 @@
                 {"type":"music","id":"23"},
                 {"type":"music","id":"24"},
                 {"type":"music","id":"25"},
-                {"type":"music","id":"26"}
+                {"type":"music","id":"26"},
+                {"type":"music","id":"27"}
             ]
         },
         {
@@ -81,7 +82,7 @@
             ]
         },
         {
-            "Title":"『ユイカ』相關資訊",
+            "Title":"『ユイカ』",
             "PlayList":false,
             "ID":"YuikaInfo",
             "Index":[
@@ -105,6 +106,14 @@
                 {"type":"a","text":"遠大 instagram","href":"https://www.instagram.com/ticketplusasia/"},
                 {"type":"mail","text":"遠大 mail","href":"service@farentasia.com"},
                 {"type":"a","text":"遠大售票系統","href":"https://ticketplus.com.tw/"}
+            ]
+        },
+        {
+            "Title":"問題回報",
+            "PlayList":false,
+            "ID":"ReportIssue",
+            "Index":[
+                {"type":"a","text":"網頁作者 Instagram","href":"https://www.instagram.com/yuiner_hoshi/"}
             ]
         }
     ]

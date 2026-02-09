@@ -75,7 +75,7 @@ function initializeBackground() {
             bottomBarContainer.insertAdjacentHTML("beforeend", bottomBar);
             AddListener(cellData["ID"]);
         }
-        const spacerDiv = `<div style="height: 50%; width: 1px; flex-shrink: 0"></div>`;
+        const spacerDiv = `<div style="height: ${BottomSpacerHeight}%; width: 1px; flex-shrink: 0"></div>`;
         backgroundDiv.insertAdjacentHTML("beforeend", spacerDiv);
         for (let cellData of data["Cells"]) {
             if(cellData["PlayList"]){

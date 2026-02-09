@@ -8,6 +8,10 @@ let PlayingAudioByID={};
 function PlaySong(songID, audioObject=null){
     return new Promise((resolve) => {
         // console.log("Playing song ID:", songID, "on audio object:", audioObject);
+        if(PlayingAudioByID[audioObject]){
+            PlayingAudioByID[audioObject].pause();
+            PlayingAudioByID[audioObject] = null;
+        }
         PlayingAudioByID[audioObject]=new Audio(MusicData[String(songID)][1]);
         PlayingAudioByID[audioObject].volume=1;
         PlayingAudioByID[audioObject].play();
@@ -53,33 +57,25 @@ async function Play(PlayListP,isContinue=true,){
             NowPlayingByID[PlayListP]=NowPlayingByID[PlayListP]%PlayingList[PlayListP].length;
             const element = document.getElementById(`music-${PlayListP}-${PlayingList[PlayListP][NowPlayingByID[PlayListP]]}`);
             if(element){
-                // element.style.borderTop = "2px solid #00000000";
-                // element.style.borderBottom = "2px solid yellow";
                 element.style.color = "yellow";
             }
             await continuePlaying(PlayListP);
             if(element){
-                // element.style.border = "none";
                 element.style.color = "#ffffff";
             }
-            NowPlayingByID[PlayListP]=(NowPlayingByID[PlayListP]+1);
+            NowPlayingByID[PlayListP]=NowPlayingByID[PlayListP]+1;
         }
-        
         while(String(NowPlaying)===String(PlayListP)){
-            
-            // border-top: 2px solid #00000000;
-    // border-bottom: 2px solid yellow ;
-            // console.log("Playing playlist:", PlayListP);
+
             NowPlayingByID[PlayListP]=NowPlayingByID[PlayListP]%PlayingList[PlayListP].length;
             const element = document.getElementById(`music-${PlayListP}-${PlayingList[PlayListP][NowPlayingByID[PlayListP]]}`);
             if(element){
-                // element.style.borderTop = "2px solid #00000000";
-                // element.style.borderBottom = "2px solid yellow";
                 element.style.color = "yellow";
             }
+
             await PlaySong(PlayingList[PlayListP][NowPlayingByID[PlayListP]], PlayListP);
+
             if(element){
-                // element.style.border = "none";
                 element.style.color = "#ffffff";
             }
             if(String(NowPlaying)!==String(PlayListP)){
